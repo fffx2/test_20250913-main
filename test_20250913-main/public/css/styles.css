@@ -1,0 +1,123 @@
+/* [파일: styles.css] */
+/* 역할: 웹 애플리케이션의 전체적인 시각적 디자인과 레이아웃을 정의. */
+
+/* --- 1. 디자인 시스템 변수 (:root) --- */
+/* :root: 문서 전체에서 사용할 수 있는 전역 변수를 선언하는 공간. (디자인 토큰) */
+:root {
+    /* Pretendard 폰트 설정 */
+    --font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    
+    /* 색상 팔레트 - WCAG AA 명도 대비 기준 준수. */
+    --color-primary: #0066cc; /* 주 색상 */
+    --color-primary-dark: #004499; /* 주 색상 (어두운 버전) */
+    --color-secondary: #28a745; /* 보조 색상 */
+    --color-neutral-900: #212529; /* 가장 어두운 회색 (주로 텍스트) */
+    --color-neutral-50: #ffffff; /* 가장 밝은 색 (주로 배경) */
+    --color-danger: #dc3545; /* 위험/에러 표시 색상 */
+    
+    /* 간격 시스템 - 일관된 여백을 위한 변수. */
+    --spacing-md: 1rem;   /* 16px (기본 단위) */
+    --spacing-lg: 1.5rem;   /* 24px */
+    --spacing-xl: 2rem;   /* 32px */
+    
+    /* 타이포그래피 - 글꼴 크기 변수. */
+    --font-size-base: 1rem;    /* 16px (기본 크기) */
+    --font-size-lg: 1.125rem;  /* 18px */
+    --font-size-2xl: 1.5rem;   /* 24px */
+    
+    /* 레이아웃 변수 */
+    --container-max-width: 1200px; /* 콘텐츠 최대 너비. */
+    --border-radius: 0.5rem; /* 모서리 둥글기. */
+    --transition: all 0.2s ease-in-out; /* 부드러운 전환 효과. */
+    
+    /* 그림자 변수 */
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* --- 2. 기본 스타일 리셋 및 전역 설정 --- */
+
+/* 모든 요소(*)의 기본 마진과 패딩을 제거하고, box-sizing을 통일하여 레이아웃 예측을 쉽게 함. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* html 요소에 기본 글자 크기를 16px로 설정하고, 부드러운 스크롤 효과 적용. */
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+/* body 요소에 기본 폰트, 글자 크기, 색상 등 전역 스타일 적용. */
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.6; /* 줄 간격 */
+    color: var(--color-neutral-900);
+    background-color: var(--color-neutral-50);
+}
+
+/* --- 3. 접근성 유틸리티 클래스 --- */
+
+/* .visually-hidden: 화면에는 보이지 않지만 스크린 리더는 읽을 수 있도록 처리. (예: input의 label) */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+}
+
+/* .skip-link: '본문으로 건너뛰기' 링크의 기본 스타일. 평소에는 화면 밖으로 숨겨둠. */
+.skip-link {
+    position: absolute;
+    top: -40px; /* 화면 위쪽으로 숨김 */
+    left: 6px;
+    background: var(--color-primary);
+    color: var(--color-neutral-50);
+    z-index: 1000; /* 다른 요소들보다 위에 표시 */
+}
+
+/* .skip-link가 키보드로 포커스를 받았을 때, 화면 안으로 보이게 처리. */
+.skip-link:focus {
+    top: 6px;
+}
+
+/* --- 4. 컴포넌트별 스타일 --- */
+
+/* (헤더, 네비게이션, 파일 업로드, 채팅창 등 각 UI 요소의 디자인을 정의하는 부분) */
+/* ... */
+
+/* --- 5. 반응형 디자인 (미디어 쿼리) --- */
+
+/* @media: 화면 크기에 따라 다른 스타일을 적용. */
+/* 화면 너비가 768px 이하일 때 (태블릿/모바일) 적용될 스타일. */
+@media (max-width: 768px) {
+    /* 모바일 환경에 맞게 기본 폰트 크기, 제목 크기 등을 조정. */
+    :root {
+        --font-size-2xl: 1.375rem; /* 22px */
+    }
+    
+    /* ... (모바일 레이아웃 조정) */
+}
+
+/* --- 6. 접근성 미디어 쿼리 --- */
+
+/* 사용자가 운영체제에서 '고대비 모드'를 설정했을 때 적용될 스타일. */
+@media (prefers-contrast: high) {
+    :root {
+        --color-primary: #0056b3; /* 더 진한 색상으로 변경 */
+    }
+}
+
+/* 사용자가 '움직임 줄이기'를 설정했을 때, 모든 애니메이션과 전환 효과를 비활성화. */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+    html {
+        scroll-behavior: auto; /* 부드러운 스크롤 비활성화 */
+    }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "accessibility-design-assistant",
+  "version": "1.0.0",
+  "description": "AI-powered accessibility and design assistant",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "accessibility",
+    "design",
+    "ai",
+    "netlify"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "openai": "^3.3.0",
+    "tinycolor2": "^1.6.0",
+    "css": "^3.0.0",
+    "css-select": "^6.0.0"
+  }
+}
