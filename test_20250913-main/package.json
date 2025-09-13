@@ -1,24 +1,22 @@
 {
   "name": "accessibility-design-assistant",
   "version": "1.0.0",
-  "description": "AI-powered accessibility and design assistant",
-  "main": "index.js",
+  "description": "WCAG & IRI 기반 HTML 접근성 분석 및 AI 디자인 어시스턴트",
+  "main": "build.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "netlify dev",
+    "build": "node build.js"
   },
-  "keywords": [
-    "accessibility",
-    "design",
-    "ai",
-    "netlify"
-  ],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
-    "openai": "^3.3.0",
-    "tinycolor2": "^1.6.0",
     "css": "^3.0.0",
-    "css-select": "^6.0.0"
-  }
+    "css-select": "^5.1.0",
+    "openai": "^3.3.0",
+    "tinycolor2": "^1.6.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  },
+  "author": "",
+  "license": "MIT"
 }
